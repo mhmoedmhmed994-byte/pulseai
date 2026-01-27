@@ -1,26 +1,42 @@
-async function askAI(prompt) {
-  const res = await fetch("https://kiukgdrkctbtknimkpds.supabase.co/functions/v1/openai-analyze", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({ prompt })
-  });
+document.addEventListener("DOMContentLoaded", () => {
 
-  const data = await res.json();
-  return data.text || "No response";
-}
+  async function askAI(prompt) {
+    const response = await fetch(
+      "https://kiukgdrkctbtknimkpds.supabase.co/functions/v1/openai-analyze",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ prompt })
+      }
+    );
 
-document.getElementById("analyzeBtn").onclick = async () => {
-  const prompt = document.getElementById("inputText").value;
-
-  if (!prompt.trim()) {
-    alert("اكتب شيء أولاً");
-    return;
+    const data = await response.json();
+    return data.text || "مفيش رد";
   }
 
-  document.getElementById("aiResult").innerText = "جارٍ التحليل...";
+  const button = document.getElementById("analyzeBtn");
+  const input = document.getElementById("inputText");
+  const result = document.getElementById("aiResult");
 
-  const answer = await askAI(prompt);
-  document.getElementById("aiResult").innerText = answer;
-};
+  button.onclick = async () => {
+    const text = input.value.trim();
+
+    if (!text) {
+      alert("اكتب حاجة الأول");
+      return;
+    }
+
+    result.innerText = "جارٍ التفكير...";
+
+    try {
+      const answer = await askAI(text);
+      result.innerText = answer;
+    } catch (err) {
+      result.innerText = "حصل خطأ";
+      console.error(err);
+    }
+  };
+
+});
