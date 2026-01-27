@@ -52,16 +52,16 @@ const text = {
 };
 
 function updateUI() {
-  document.getElementById("siteName").innerText = text[lang].siteName;
-  document.getElementById("btnSymptoms").innerText = text[lang].buttons.symptoms;
-  document.getElementById("btnNutrition").innerText = text[lang].buttons.nutrition;
-  document.getElementById("btnFitness").innerText = text[lang].buttons.fitness;
-  document.getElementById("analyzeBtn").innerText = text[lang].buttons.analyze;
+  document.body.dir = lang === "AR" ? "rtl" : "ltr";
 
-  document.getElementById("title").innerText =
-    text[lang].content[section].title;
-  document.getElementById("desc").innerText =
-    text[lang].content[section].desc;
+  siteName.innerText = text[lang].siteName;
+  btnSymptoms.innerText = text[lang].buttons.symptoms;
+  btnNutrition.innerText = text[lang].buttons.nutrition;
+  btnFitness.innerText = text[lang].buttons.fitness;
+  analyzeBtn.innerText = text[lang].buttons.analyze;
+
+  title.innerText = text[lang].content[section].title;
+  desc.innerText = text[lang].content[section].desc;
 }
 
 function showSection(sec) {
@@ -69,9 +69,13 @@ function showSection(sec) {
   updateUI();
 }
 
-document.getElementById("langBtn").onclick = () => {
+langBtn.onclick = () => {
   lang = lang === "AR" ? "EN" : "AR";
   updateUI();
+};
+
+analyzeBtn.onclick = async () => {
+  result.innerText = "⏳ جاري التحليل...";
 };
 
 updateUI();
