@@ -3,28 +3,41 @@
 <head>
   <meta charset="UTF-8" />
   <title>PulseAI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
 <header>
   <h1 id="siteName">PulseAI</h1>
-  <button id="langBtn">🌍</button>
+
+  <select id="langSelect">
+    <option value="AR">🇪🇬 عربي</option>
+    <option value="EN">🇺🇸 English</option>
+    <option value="ZH">🇨🇳 中文</option>
+  </select>
 </header>
 
-<div class="sections">
-  <button onclick="showSection('symptoms')" id="btnSymptoms"></button>
-  <button onclick="showSection('nutrition')" id="btnNutrition"></button>
-  <button onclick="showSection('fitness')" id="btnFitness"></button>
-</div>
+<div class="container">
 
-<main>
-  <h2 id="title"></h2>
-  <p id="desc"></p>
-  <textarea id="userInput" placeholder="اكتب هنا..."></textarea>
-  <button id="analyzeBtn"></button>
-  <p id="result"></p>
-</main>
+  <div class="sections">
+    <button onclick="showSection('symptoms')" id="btnSymptoms"></button>
+    <button onclick="showSection('nutrition')" id="btnNutrition"></button>
+    <button onclick="showSection('fitness')" id="btnFitness"></button>
+  </div>
+
+  <div class="card">
+    <h2 id="title"></h2>
+    <p id="desc"></p>
+
+    <textarea id="userInput"></textarea>
+
+    <button class="analyze-btn" id="analyzeBtn"></button>
+
+    <div id="result"></div>
+  </div>
+
+</div>
 
 <footer>
   <a href="mailto:mb2453504@gmail.com">📧 Email</a>
