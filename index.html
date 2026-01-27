@@ -1,47 +1,42 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>PulseAI</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>
-  <h1 id="siteName">PulseAI</h1>
+  <div class="logo">PulseAI</div>
 
   <select id="langSelect">
-    <option value="AR">🇪🇬 عربي</option>
-    <option value="EN">🇺🇸 English</option>
-    <option value="ZH">🇨🇳 中文</option>
+    <option value="EN">EN</option>
+    <option value="AR">AR</option>
+    <option value="ZH">中文</option>
   </select>
 </header>
 
-<div class="container">
-
-  <div class="sections">
+<main>
+  <nav>
     <button onclick="showSection('symptoms')" id="btnSymptoms"></button>
     <button onclick="showSection('nutrition')" id="btnNutrition"></button>
     <button onclick="showSection('fitness')" id="btnFitness"></button>
-  </div>
+  </nav>
 
-  <div class="card">
-    <h2 id="title"></h2>
-    <p id="desc"></p>
+  <h1 id="title"></h1>
+  <p id="desc"></p>
 
-    <textarea id="userInput"></textarea>
+  <textarea id="userInput" placeholder="Type here..."></textarea>
 
-    <button class="analyze-btn" id="analyzeBtn"></button>
+  <button id="analyzeBtn"></button>
 
-    <div id="result"></div>
-  </div>
-
-</div>
+  <div id="result"></div>
+</main>
 
 <footer>
-  <a href="mailto:mb2453504@gmail.com">📧 Email</a>
-  <a href="https://wa.me/201223547704" target="_blank">💬 WhatsApp</a>
+  PulseAI © 2026
 </footer>
 
 <script src="script.js"></script>
