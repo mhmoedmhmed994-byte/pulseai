@@ -1,62 +1,25 @@
-import { supabase } from "./supabase.js";
+const guest = localStorage.getItem("guest");
 
-const logoutBtn = document.getElementById("logoutBtn");
-const addBtn = document.getElementById("addBtn");
-const todoText = document.getElementById("todoText");
-const todosList = document.getElementById("todosList");
-
-logoutBtn.addEventListener("click", async () => {
-  localStorage.removeItem("guest");
-  await supabase.auth.signOut();
+if (!guest) {
+  // لازم يكون مسجل دخول عشان يفتح Dashboard
   window.location.href = "index.html";
-});
-
-async function loadTodos() {
-  todosList.innerHTML = "";
-
-  const isGuest = localStorage.getItem("guest") === "true";
-
-  if (isGuest) {
-    const guestTodos = JSON.parse(localStorage.getItem("guestTodos") || "[]");
-    guestTodos.forEach(todo => {
-      todosList.innerHTML += `<div class="todo-item">${todo}</div>`;
-    });
-  } else {
-    const user = await supabase.auth.getUser();
-    const { data } = await supabase
-      .from("todos")
-      .select("*")
-      .eq("user_id", user.data.user.id);
-
-    data.forEach(todo => {
-      todosList.innerHTML += `<div class="todo-item">${todo.task}</div>`;
-    });
-  }
 }
 
-addBtn.addEventListener("click", async () => {
-  const task = todoText.value;
+document.getElementById("logoutBtn").onclick = () => {
+  localStorage.removeItem("guest");
+  window.location.href = "index.html";
+};
 
-  const isGuest = localStorage.getItem("guest") === "true";
+document.getElementById("analyzeBtn").onclick = async () => {
+  const text = document.getElementById("todoText").value;
 
-  if (isGuest) {
-    const guestTodos = JSON.parse(localStorage.getItem("guestTodos") || "[]");
-    guestTodos.push(task);
-    localStorage.setItem("guestTodos", JSON.stringify(guestTodos));
-    todoText.value = "";
-    loadTodos();
-  } else {
-    const user = await supabase.auth.getUser();
-    const { error } = await supabase.from("todos").insert([
-      { task, user_id: user.data.user.id, status: "Not Started" }
-    ]);
+  const res = await fetch("YOUR_FUNCTION_URL", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ text }),
+  });
 
-    if (error) alert(error.message);
-    else {
-      todoText.value = "";
-      loadTodos();
-    }
-  }
-});
-
-loadTodos();
+  const data = await res.json();
+  document.getElementById("result").innerText =
+    data.choices[0].message.content;
+};
