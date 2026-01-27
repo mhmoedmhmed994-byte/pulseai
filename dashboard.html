@@ -1,24 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PulseAI Dashboard</title>
-  <link rel="stylesheet" href="dashboard.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PulseAI - Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css" />
 </head>
 <body>
-  <div class="dash-container">
-    <header>
-      <h1>PulseAI</h1>
-      <button id="logoutBtn" class="btn logout">Logout</button>
-    </header>
+  <div class="container">
+    <h1>Dashboard</h1>
 
     <textarea id="todoText" placeholder="اكتب هنا..."></textarea>
-    <button id="addBtn" class="btn add">Save</button>
+    <button id="analyzeBtn">تحليل بواسطة AI</button>
 
-    <div id="todosList"></div>
+    <div id="result"></div>
+    <button id="logoutBtn">تسجيل خروج</button>
   </div>
 
-  <script type="module" src="dashboard.js"></script>
+  <script src="dashboard.js"></script>
 </body>
 </html>
