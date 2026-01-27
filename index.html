@@ -1,44 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PulseAI - Login</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PulseAI Login</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="container">
+    <h1>PulseAI</h1>
 
-  <div class="login-bg"></div>
+    <input id="email" type="email" placeholder="Email">
+    <input id="password" type="password" placeholder="Password">
 
-  <div class="login-card">
-    <div class="logo">
-      <span class="pulse-icon">📈</span>
-      <span class="logo-text">PulseAI</span>
-    </div>
+    <button id="loginBtn" class="btn primary">Login</button>
+    <button id="googleBtn" class="btn google">Login with Google</button>
+    <button id="guestBtn" class="btn guest">Continue as Guest</button>
 
-    <h2>Welcome Back!</h2>
-
-    <div class="input-box">
-      <span class="icon">✉️</span>
-      <input id="email" type="email" placeholder="Email Address">
-    </div>
-
-    <div class="input-box">
-      <span class="icon">🔒</span>
-      <input id="password" type="password" placeholder="Password">
-    </div>
-
-    <a href="#" class="forgot">Forgot Password?</a>
-
-    <button class="btn primary" id="loginBtn">Login</button>
-    <button class="btn google" id="googleBtn">
-      <span class="google-icon">G</span>
-      Sign in with Google
-    </button>
-
-    <a href="#" class="guest" id="guestBtn">Continue as Guest</a>
+    <p id="status"></p>
   </div>
 
-  <script src="script.js"></script>
+  <script type="module" src="script.js"></script>
 </body>
 </html>
