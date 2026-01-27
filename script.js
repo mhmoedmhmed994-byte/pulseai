@@ -12,31 +12,29 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     );
 
-    const data = await response.json();
-    return data.text || "مفيش رد";
+    const text = await response.text();
+    console.log("RAW RESPONSE:", text);
+
+    try {
+      return JSON.parse(text).text;
+    } catch {
+      return text;
+    }
   }
 
-  const button = document.getElementById("analyzeBtn");
-  const input = document.getElementById("inputText");
-  const result = document.getElementById("aiResult");
+  document.getElementById("analyzeBtn").onclick = async () => {
+    const input = document.getElementById("inputText").value.trim();
+    const result = document.getElementById("aiResult");
 
-  button.onclick = async () => {
-    const text = input.value.trim();
-
-    if (!text) {
+    if (!input) {
       alert("اكتب حاجة الأول");
       return;
     }
 
     result.innerText = "جارٍ التفكير...";
 
-    try {
-      const answer = await askAI(text);
-      result.innerText = answer;
-    } catch (err) {
-      result.innerText = "حصل خطأ";
-      console.error(err);
-    }
+    const answer = await askAI(input);
+    result.innerText = answer || "مفيش رد";
   };
 
 });
