@@ -3,26 +3,77 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PulseAI - Login</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>PulseAI</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #fff;
+      color: #111;
+    }
+
+    textarea {
+      width: 100%;
+      height: 120px;
+      margin-top: 10px;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    #aiResult {
+      margin-top: 20px;
+      font-size: 16px;
+      background: #f3f3f3;
+      padding: 10px;
+      border-radius: 6px;
+    }
+  </style>
 </head>
+
 <body>
-  <div class="container">
-    <h1 id="siteName">PulseAI</h1>
 
-    <button id="langBtn">🌍</button>
+  <h1>PulseAI</h1>
 
-    <input id="email" type="email" placeholder="Email" />
-    <input id="password" type="password" placeholder="Password" />
+  <textarea id="inputText" placeholder="اكتب هنا..."></textarea>
+  <button id="analyzeBtn">تحليل</button>
 
-    <button id="loginBtn">تسجيل الدخول</button>
-    <button id="signupBtn">إنشاء حساب</button>
-    <button id="forgotBtn">نسيت كلمة المرور</button>
+  <p id="aiResult"></p>
 
-    <p id="msg"></p>
-  </div>
+  <script>
+    async function askAI(prompt) {
+      const res = await fetch("https://kiukgdrkctbtknimkpds.supabase.co/functions/v1/openai-analyze", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ prompt })
+      });
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="auth.js"></script>
+      const data = await res.json();
+      return data.text || "No response";
+    }
+
+    document.getElementById("analyzeBtn").onclick = async () => {
+      const prompt = document.getElementById("inputText").value;
+
+      if (!prompt.trim()) {
+        alert("اكتب شيء أولاً");
+        return;
+      }
+
+      document.getElementById("aiResult").innerText = "جارٍ التحليل...";
+
+      const answer = await askAI(prompt);
+      document.getElementById("aiResult").innerText = answer;
+    };
+  </script>
+
 </body>
 </html>
