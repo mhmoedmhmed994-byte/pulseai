@@ -1,18 +1,40 @@
-import { supabase } from "./supabase.js";
+const SUPABASE_URL = "https://YOUR-PROJECT-REF.supabase.co";
+const SUPABASE_KEY = "YOUR_SUPABASE_ANON_KEY";
 
-export async function login(email, password) {
-  return await supabase.auth.signInWithPassword({ email, password });
-}
+const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-export async function signup(email, password) {
-  return await supabase.auth.signUp({ email, password });
-}
+const email = document.getElementById("email");
+const password = document.getElementById("password");
+const msg = document.getElementById("msg");
 
-export async function googleLogin() {
-  return await supabase.auth.signInWithOAuth({ provider: "google" });
-}
+document.getElementById("loginBtn").onclick = async () => {
+  const { error } = await supabase.auth.signInWithPassword({
+    email: email.value,
+    password: password.value,
+  });
 
-export function guestLogin() {
+  if (error) msg.innerText = error.message;
+  else window.location.href = "dashboard.html";
+};
+
+document.getElementById("signupBtn").onclick = async () => {
+  const { error } = await supabase.auth.signUp({
+    email: email.value,
+    password: password.value,
+  });
+
+  if (error) msg.innerText = error.message;
+  else msg.innerText = "تم إنشاء الحساب! تأكد من بريدك.";
+};
+
+document.getElementById("guestBtn").onclick = () => {
   localStorage.setItem("guest", "true");
   window.location.href = "dashboard.html";
-}
+};
+
+document.getElementById("forgotBtn").onclick = async () => {
+  const { error } = await supabase.auth.resetPasswordForEmail(email.value);
+
+  if (error) msg.innerText = error.message;
+  else msg.innerText = "تم إرسال رابط تغيير كلمة المرور!";
+};
