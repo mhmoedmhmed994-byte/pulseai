@@ -1,1 +1,67 @@
+body{
+  margin:0;
+  font-family: Arial, sans-serif;
+  height:100vh;
+  overflow:hidden;
+}
 
+.dash-bg{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background: url('dashboard-bg.png') no-repeat center center;
+  background-size: cover;
+}
+
+.dash-content{
+  position:relative;
+  padding: 20px;
+  color:#fff;
+}
+
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.tabs{
+  margin-top: 20px;
+  display:flex;
+  gap:10px;
+}
+
+.tabs button{
+  flex:1;
+  padding: 14px;
+  border:none;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.3);
+  color:#fff;
+  font-weight:700;
+}
+
+.tabs .active{
+  background: rgba(255,255,255,0.8);
+  color:#000;
+}
+
+textarea{
+  width:100%;
+  height:150px;
+  margin-top:20px;
+  border-radius: 20px;
+  border:none;
+  padding: 15px;
+}
+
+.analyze{
+  width:100%;
+  padding: 16px;
+  margin-top:15px;
+  border:none;
+  border-radius: 25px;
+  font-weight:800;
+}
