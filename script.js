@@ -41,11 +41,35 @@ const text = {
       },
       nutrition: {
         title: "Nutrition Analysis",
-        desc: "Describe your diet"
+        desc: "Describe your daily diet"
       },
       fitness: {
         title: "Fitness Analysis",
-        desc: "Describe your activity"
+        desc: "Describe your physical activity"
+      }
+    }
+  },
+
+  ZH: {
+    siteName: "PulseAI – 智能健康助手",
+    buttons: {
+      symptoms: "🩺 症状分析",
+      nutrition: "🥗 营养分析",
+      fitness: "🏋️ 健身分析",
+      analyze: "分析"
+    },
+    content: {
+      symptoms: {
+        title: "健康症状分析",
+        desc: "请输入您的症状"
+      },
+      nutrition: {
+        title: "营养分析",
+        desc: "请输入您的饮食情况"
+      },
+      fitness: {
+        title: "健身分析",
+        desc: "请输入您的运动情况"
       }
     }
   }
@@ -69,12 +93,12 @@ function showSection(sec) {
   updateUI();
 }
 
-langBtn.onclick = () => {
-  lang = lang === "AR" ? "EN" : "AR";
+langSelect.onchange = (e) => {
+  lang = e.target.value;
   updateUI();
 };
 
-analyzeBtn.onclick = async () => {
+analyzeBtn.onclick = () => {
   result.innerText = "⏳ جاري التحليل...";
 };
 
