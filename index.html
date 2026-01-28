@@ -1,56 +1,51 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-  <meta charset="UTF-8" />
-  <title>Clinic Booking</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>Service Booking</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header>
-  <h1 id="siteTitle">حجز موعد طبي</h1>
+<div class="card">
 
-  <div class="top-actions">
-    <select id="langSelect">
-      <option value="AR">العربية</option>
-      <option value="EN">English</option>
-      <option value="ZH">中文</option>
-    </select>
+  <header>
+    <h1 id="title">حجز خدمة بسهولة</h1>
 
-    <select id="serviceSelect">
-      <option value="general">صحة عامة</option>
-      <option value="nutrition">تغذية</option>
-      <option value="fitness">لياقة بدنية</option>
-    </select>
-  </div>
-</header>
+    <div class="controls">
+      <select id="language">
+        <option value="ar">العربية</option>
+        <option value="en">English</option>
+        <option value="zh">中文</option>
+      </select>
 
-<main>
-  <p id="descText">احجز موعدك بسهولة بدون تعقيد</p>
+      <select id="service">
+        <option value="general">صحة عامة</option>
+        <option value="nutrition">تغذية</option>
+        <option value="fitness">لياقة بدنية</option>
+      </select>
+    </div>
+  </header>
 
-  <input type="text" id="name" placeholder="الاسم الكامل" />
-  <input type="tel" id="phone" placeholder="رقم الهاتف" />
-  <input type="date" id="date" />
-  <input type="time" id="time" />
+  <p id="description">احجز موعدك في أقل من دقيقة</p>
+
+  <input id="name" type="text" placeholder="الاسم الكامل">
+  <input id="phone" type="tel" placeholder="رقم الهاتف">
+  <input id="date" type="date">
+  <input id="time" type="time">
 
   <button id="bookBtn">تأكيد الحجز</button>
 
   <p id="result"></p>
 
   <div class="contact">
-    <p id="contactText">تواصل معنا</p>
-
-    <a href="mailto:clinic@email.com" class="contact-btn email">
-      📧 البريد الإلكتروني
-    </a>
-
-    <a href="https://wa.me/201223547704" target="_blank" class="contact-btn whatsapp">
-      💬 واتساب
-    </a>
+    <p id="contactTitle">تواصل معنا</p>
+    <a href="mailto:contact@email.com" class="btn email">📧 Email</a>
+    <a href="https://wa.me/201223547704" target="_blank" class="btn whatsapp">💬 WhatsApp</a>
   </div>
-</main>
+
+</div>
 
 <script src="script.js"></script>
 </body>
