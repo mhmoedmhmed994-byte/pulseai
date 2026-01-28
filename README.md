@@ -1,4 +1,3 @@
-# Clinic Booking Website
-
-Simple medical appointment booking system.
-Supports Arabic, English, Chinese.
+Simple service booking website
+3 languages
+Responsive design
