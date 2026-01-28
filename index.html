@@ -1,49 +1,46 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
+  <title>حجز موعد طبي</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PulseAI</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
   <div class="container">
-    <header class="topbar">
-      <div class="brand">PulseAI</div>
+    <h1>حجز موعد طبي</h1>
+    <p class="subtitle">اختر الموعد المناسب واحجز فورًا</p>
 
-      <div class="top-right">
-        <select id="langSelect">
-          <option value="ar">العربية</option>
-          <option value="en">English</option>
-          <option value="zh">中文</option>
-        </select>
+    <form id="bookingForm">
+      <label>اسم المريض</label>
+      <input type="text" id="name" required />
 
-        <select id="analysisSelect">
-          <option value="symptoms">تحليل صحة عامة</option>
-          <option value="nutrition">تحليل تغذية</option>
-          <option value="fitness">تحليل لياقة بدنية</option>
-        </select>
-      </div>
-    </header>
+      <label>رقم الموبايل</label>
+      <input type="tel" id="phone" required />
 
-    <main class="main">
-      <h1 id="mainTitle">اكتب سؤالك وسيجيبك الذكاء الاصطناعي</h1>
+      <label>اختر اليوم</label>
+      <select id="day">
+        <option>السبت</option>
+        <option>الأحد</option>
+        <option>الإثنين</option>
+        <option>الثلاثاء</option>
+      </select>
 
-      <textarea id="inputText" placeholder="اكتب هنا..."></textarea>
+      <label>اختر الساعة</label>
+      <select id="time">
+        <option>10:00 صباحًا</option>
+        <option>12:00 ظهرًا</option>
+        <option>2:00 مساءً</option>
+        <option>5:00 مساءً</option>
+      </select>
 
-      <button id="analyzeBtn">إرسال</button>
+      <button type="submit">تأكيد الحجز</button>
+    </form>
 
-      <div id="aiResult"></div>
-
-      <div class="footer-buttons">
-        <button id="contactBtn">تواصل معنا</button>
-        <button id="loginBtn">تسجيل دخول</button>
-        <button id="signupBtn">إنشاء حساب</button>
-      </div>
-    </main>
+    <p id="result"></p>
   </div>
 
-  <script src="supabase.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
