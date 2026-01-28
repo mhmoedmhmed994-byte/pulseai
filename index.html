@@ -1,46 +1,57 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
   <meta charset="UTF-8" />
-  <title>حجز موعد طبي</title>
+  <title>Clinic Booking</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <div class="container">
-    <h1>حجز موعد طبي</h1>
-    <p class="subtitle">اختر الموعد المناسب واحجز فورًا</p>
+<header>
+  <h1 id="siteTitle">حجز موعد طبي</h1>
 
-    <form id="bookingForm">
-      <label>اسم المريض</label>
-      <input type="text" id="name" required />
+  <div class="top-actions">
+    <select id="langSelect">
+      <option value="AR">العربية</option>
+      <option value="EN">English</option>
+      <option value="ZH">中文</option>
+    </select>
 
-      <label>رقم الموبايل</label>
-      <input type="tel" id="phone" required />
-
-      <label>اختر اليوم</label>
-      <select id="day">
-        <option>السبت</option>
-        <option>الأحد</option>
-        <option>الإثنين</option>
-        <option>الثلاثاء</option>
-      </select>
-
-      <label>اختر الساعة</label>
-      <select id="time">
-        <option>10:00 صباحًا</option>
-        <option>12:00 ظهرًا</option>
-        <option>2:00 مساءً</option>
-        <option>5:00 مساءً</option>
-      </select>
-
-      <button type="submit">تأكيد الحجز</button>
-    </form>
-
-    <p id="result"></p>
+    <select id="serviceSelect">
+      <option value="general">صحة عامة</option>
+      <option value="nutrition">تغذية</option>
+      <option value="fitness">لياقة بدنية</option>
+    </select>
   </div>
+</header>
 
-  <script src="script.js"></script>
+<main>
+  <p id="descText">احجز موعدك بسهولة بدون تعقيد</p>
+
+  <input type="text" id="name" placeholder="الاسم الكامل" />
+  <input type="tel" id="phone" placeholder="رقم الهاتف" />
+  <input type="date" id="date" />
+  <input type="time" id="time" />
+
+  <button id="bookBtn">تأكيد الحجز</button>
+
+  <p id="result"></p>
+
+  <div class="contact">
+    <p id="contactText">تواصل معنا</p>
+
+    <a href="mailto:clinic@email.com" class="contact-btn email">
+      📧 البريد الإلكتروني
+    </a>
+
+    <a href="https://wa.me/201223547704" target="_blank" class="contact-btn whatsapp">
+      💬 واتساب
+    </a>
+  </div>
+</main>
+
+<script src="script.js"></script>
 </body>
 </html>
